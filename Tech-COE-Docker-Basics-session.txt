@@ -1,0 +1,1498 @@
+﻿session 1
+What are containers?
+Containers provide a consistent, isolated execution environment for applications. They're similar to VMs except they don't require a guest operating system. Instead, the application and all its dependencies is packaged into a "container" and then a standard runtime environment is used to execute the app. This allows the container to start up in just a few seconds, because there's no OS to boot and initialize. You only need the app to launch.
+
+The open-source project, Docker, is one of the leading platforms for managing containers. Docker containers provide an efficient, lightweight approach to application deployment because they allow different components of the application to be deployed independently into different containers. Multiple containers can be run on a single machine, and containers can be moved between machines. The portability of the container makes it easy for applications to be deployed in multiple environments, either on-premises or in the cloud, often with no changes to the application.
+
+=====>Why Docker?
+  What problem does Docker solve? 
+- Environment setup and management is a tedious task in every project.
+- Docker solves the problem of having identical environments across various stages of development and having isolated environments for your individual applications.
+- Docker provides a solution to this problem with containerization.
+- Earlier, we used to create virtual machines, and each VM had an OS which took a lot of space and made it heavy.Now in docker container’s case, you have a single OS, and the resources are shared between the containers. 
+
+Learning Docker: 
+- Samples: https://docs.docker.com/samples/
+------------------------
+===>What is containerization?
+- Containerization means, that your application runs in an isolated container, that is an explicitly defined, reproducable and portable environment. 
+- A container of an app is the app’s operating environment in our computing scenario. With Docker you ship the operating environment along with your application.
+- One of the main benefits of using Docker, and container technology, is the portability of applications. It’s possible to spin up an application on-premises or in a public cloud environment in a matter of minutes.
+
+===>Containers vs Virtual Machines
+- Terms “Containers” and “Virtual Machines” are often used interchangeably, however, this is often a misunderstanding. But, both are just different methods to provide Operating System Virtualization.
+
+- Standard virtual machines:
+---------------------------
+-Virtualization is a technique of importing a guest os on the top of host os.
+- This technique is revolution in the beginning because Developers run the different application in different vms all running on same host whereas virtualization supported for a single server to run many standalone operating systems as virtual guests.
+- Include a full Operating System, OS Packages and if required, few applications. This is made possible by a Hypervisor which provides hardware virtualization to the virtual machine. 
+
+Host os=> Hypervisor=>(Guest os1,Guest os2....)=>(Bin& Lib, Bin & Lib 2.....)=>(App1,App2,.....)
+
+- They take a physical server and provide a fully functional operating environment that shares those physical resources with other virtual machines.
+- This eliminate the need of extra h/w resource and enable the backup allowing the the recovery in failure conditions
+
+---> Advantages
+
+   1.Multiple OS in the same machine
+   2.Easy Maintainance and Recovery
+   3.Lower total cost of Ownership
+
+---> Disadvantages
+
+   1.Multiple VMs Lead to unstable performance
+   2.Hypervisors are not as efficient as a host os
+   3.Long Boot up process (Approximate 1 minute)
+   4.This is using the host system resources
+   5.This is very critical in case of real time applications where fast processing is required. 
+   6.scaling the no of vms is tedious and costly affiar
+
+- Containers:
+---------------------------
+- Similar to virtual machines except that Containers are not full operating systems. They only include the necessary OS Packages and Applications.In other words, Contairnerization is Just Virtualization at OS Level 
+- They do not generally contain a full operating system or hardware virtualization, that’s why these are “lightweight”.Binaries and Libraries of the containers are on the host kernel which makes processing and execution very fast
+
+Host os=>Container Engine=>(Bin& Lib, Bin & Lib 2.....) =>(App1,App2)
+
+- They are used to isolate a running process within a single host to ensure that the isolated processes cannot interact with other processes within that same system. 
+- Containers sandbox processes from each other
+- Docker enables creating and working with Containers as easy as possible.
+
+- Virtualization brings the abstraction at h/w where as Contairnerization brings abstraction to software
+
+--->  Advantages
+
+	1.Containers on same os kernel are lighter and smaller
+	2.Better Resource utilization Compared to VMS
+	3.Short Boot up process (1/20th of second )
+
+---------------------------
+
+Which of the below option is incorrect ?
+
+1. Contairnerization  is replacing Virtualization 
+2. Contairnerization brings process level isolation
+3. Hypervisors Manage the VMS.
+
+2.What is  docker ?
+=====================
+Docker is a container management service.
+The keywords of Docker are develop, ship and run anywhere.
+The whole idea of Docker is for developers to easily develop applications, ship them into containers which can then be deployed anywhere.
+- Docker is a container management service.
+- The keywords of Docker are develop, ship and run anywhere.
+- The whole idea of Docker is for developers to easily develop applications, ship them into containers which can then be deployed anywhere.
+- It envelopes the application along with all other elements like external libraries and other such dependencies which are required to run the application into a single package smoothly.
+- It is an open source which means that anyone can add features and functionalities to meet their needs thus contribute towards the betterment of the tool.
+
+
+3.Features of Docker
+====================
+
+=>Docker has the ability to reduce the size of development by providing a smaller footprint of the operating system via containers.
+
+=>With containers, it becomes easier for teams across different units, such as development, QA and Operations to work seamlessly across applications.
+
+=>You can deploy Docker containers anywhere, on any physical and virtual machines and even on the cloud.
+
+=>Since Docker containers are pretty lightweight, they are very easily scalable.
+
+---------------------------
+===> Features of Docker
+- Docker has the ability to reduce the size of development by providing a smaller footprint of the operating system via containers.
+-With containers, it becomes easier for teams across different units, such as development, QA and Operations to work seamlessly across applications.
+-You can deploy Docker containers anywhere, on any physical and virtual machines and even on the cloud.
+-Since Docker containers are pretty lightweight, they are very easily scalable.
+
+===Common Docker Use Cases
+(1)Configuration Simplification: 
+- Docker can run on any platform with the help of its configuration without the actual overhead of a virtual machine.
+- It allows you to put the configuration file into the code and pass environment variables to cater to different environments. So that one docker image could be used in the different environment.
+
+(2)Code Management: The code travels through a different environment in its journey from development to production.
+- Each environment is having slight variation than the other. Docker eliminates this difference by providing a consistent environment, making the development and coding so much more comfortable.
+- Docker images being immutable they come with the advantage of having zero change in application environment from dev to production.
+
+(3)Improved Development Productivity: The two essential objectives in the development ecosystem, is to have the development environment replicate as close as possible to the production environment and next goal to get quality code delivered as soon as possible.
+- Docker allows the code to run in a container which reflects the production environment and unlike VM, docker has lesser overhead memory capacity wise which helps several services to run.
+
+(4)Isolation of Applications: There are cases where application isolation may be needed for example API servers which require different apache and a different set of dependencies.
+- Running API servers under different containers is much better way out.
+
+(5)Debugging Capabilities: Docker provides numerous tools that work well with containers, with the ability to insert checkpoints within containers and also different containers which are quite essential while testing applications.
+
+(6)Rapid Deployment: Docker containers can be created quite quickly which achieved as containers are not booting up an OS but just running the application.
+- Once set, they give you peace that once the code has worked, it will work in all environment.
+
+------------------------
+--->Docker Editions:Docker is available in two editions:
+(1)Community Edition (CE)
+(2)Enterprise Edition (EE)
+
+(1)Docker Community Edition (CE) is ideal for individual developers and small teams looking to get started with Docker and experimenting with container-based apps.
+
+(2)Docker Enterprise Edition (EE) is designed for enterprise development and IT teams who build, ship, and run business critical applications in production at scale.
+
+===> Docker installation methods
+- Generally, there are three main Docker installation methods, the choice of which depends on the situation and environment, as explained below.
+(1)Using the Docker repositories: – Easy to install and upgrade method recommended for most online installations.
+(2)Manual download, installation, and upgrades: – suitable for offline computers that have no access to internet
+(3)Using automated scripts: for development and testing environments.
+
+
+--->Installation using the Docker repositories
+(1)Docker for Mac - It allows one to run Docker containers on the Mac OS.
+(2)Docker for Linux - It allows one to run Docker containers on the Linux OS.
+(3)Docker for Windows - It allows one to run Docker containers on the Windows OS.
+
+-Docker Engine - It is used for building Docker images and creating Docker containers.
+-Docker Hub - This is the registry which is used to host various Docker images.
+-Docker Compose - This is used to define applications using multiple Docker containers.
+
+------------------------
+===>Installation of Docker on windows?
+- Refer this site :  https://docs.docker.com/toolbox/toolbox_install_windows/
+
+- For windows we need to download Docker toolbox.
+- To Check Installation: Open the Command Promt and check on the below mentined commands
+1.docker version  :shows the version of docker
+2.docker info     :gives the information of docker
+-----------------------
+Diff between docker toolbox and docker for windows
+I. Docker tool box installation gives you the below things
+1.Docker CE/EE
+2.Docker Compose
+3.Docker Machine: creates a VM . runs the lightweight Linux machine. 
+4.VirtualBox: loads linux on non linux os like windows and mac. because docker loads in linux os.It is type2hypervisor and runs on all major platforms
+5.Docker Quickstart terminal: creates a new server on docker maachine
+6.kitematic: graphical tool that manages images
+
+docker toolbox+docker machine==VirtualBox VM+docker installed
+The first 3 are specific to docker
+
+II. Docker for Windows/Mac
+--No Virttualbox required . It uses hypervisor 1 that comes coded with the OS
+   Windows uses Hyper-v
+   MacOS uses Hyperkit
+ It gives you below 3 things
+1.Docker CE/EE
+2.Docker Compose
+3.Docker Machine
+
+Docker Toolbox			Dockerfor Mac/win
+----------------		--------------------
+Need type 2 hypervisor		Need a type 1 hypervisor
+windows 7+(Home edition is ok)	Win 10(pro,Ent,stu)
+Docker deemon[remote]		docker deemon[local]
+access 192.168.99.199		Any terminal you want
+Might be faster			Might be slower
+------------------------
+
+Docker Basic Commands
+=====================
+
+Basic
+: docker version
+: docker -v 
+: docker --version 
+: docker info
+: docker --help
+: docker login
+
+————————————
+Images
+:docker images --help
+: docker images                        To list the images
+:docker images -q			To list only docker id
+: docker images ls                     To list the images
+: docker pull                          To pull tha image
+: docker rmi                           To remove one or more iamges
+: docker rmi $(docker images -q)       To remove all images
+
+————————————
+Containers
+: docker ps                                                 shows only running cotainers(use -a for show all containers))
+: docker ps -a                                              shows all containers
+: docker rm <container-name>                                remove one or more containers
+: docker rm $(docker ps -a -q)                              remove all containers
+: docker run <image-name>                                   create a container from image (first time used to container)
+: docker run -d <image-name>                                create a container from image in detached mode
+: docker run -it <image-name> bash                          create a container from image in interactive mode terminal
+: doker start --help
+: docker start -i <container-name>                          To start the stoped container
+: docker stop <container-name>                              To stop running container
+: docker logs <container-name>                              To sess logs of contianer
+: docker exec -it <container-name> bash                     To interact with container
+: docker run --name a-centos -it centos bash                container will not be removed on exit
+: docker run --name b-centos --rm -it centos bash           container will be removed on exit
+  
+————————————
+System
+: docker stats
+: docker system df   ----> generated a summary for docker objects
+: docker system prune (to stop all running containers)
+-----------------------------------------------------------------------------------------------
+Online practice for docker:
+
+https://labs.play-with-docker.com/
+chhayanikam01
+
+===>Docker Basic Commands
+
+-Verify docker version installed on the machine
+: docker version
+: docker --version
+: docker -v
+
+- Verify docker Engine Set-Up and details
+: docker info
+
+- List all Docker commands
+docker
+
+: docker --help
+: docker login
+: docker ps
+: docker stats
+————————————
+===>Docker Architecture: Docker has the following Components:
+(1)Docker Engine
+(2)Docker Client
+(3)Docker Registries
+(4)Docker Objects
+
+(1)Docker Engine
+- core part of the whole Docker system
+- It is a client-server application with these major components:
+(1.1)Server: It is the docker daemon called dockerd. It can create and manage docker images. Containers, networks, etc.
+(1.2)Rest API: It is used to instruct docker daemon what to do.
+(1.3)Command Line Interface (CLI): It is a client which is used to enter docker commands.
+
+(2)Docker Client
+- Docker users can interact with Docker through a client. 
+- When any docker commands runs, the client sends them to dockerd daemon, which carries them out. Docker API is used by Docker commands. Docker client can communicate with more than one daemon.
+
+(3)Docker Registries
+- It is the location where the Docker images are stored. It can be a public docker registry or a private docker registry. 
+- Docker Hub is the default place of docker images, its stores’ public registry. 
+- When you execute docker pull or docker run commands, the required docker image is pulled from the configured registry. 
+- When you execute docker push command, the docker image is stored on the configured registry.
+-Docker store allows you to buy and sell Docker images or distribute them for free.
+
+===>Docker Environment :Combination of Docker Engine and Docker Objects
+
+(4)Docker Objects
+- When you are working with Docker, you use images, containers, volumes, networks; all these are Docker objects.
+
+————————————
+===>Docker Objects
+
+(1)Images
+- Docker images are read-only templates with instructions to create a docker container. 
+- Docker image can be pulled from a Docker hub and used as it is, or you can add additional instructions to the base image and create a new and modified docker image. 
+- You can create your own docker images also using a dockerfile. Create a dockerfile with all the instructions to create a container and run it; it will create your custom docker image.
+- Docker image has a base layer which is read-only, and the top layer can be written. When you edit a dockerfile and rebuild it, only the modified part is rebuilt in the top layer.
+
+(2)Containers
+- After you run a docker image, it creates a docker container. 
+- All the applications and their environment run inside this container. You can use Docker API or CLI to start, stop, delete a docker container.
+- E.g:Basic Hello World
+docker container run hello-world
+or
+docker run hello-world
+
+-->To run a ubuntu docker container: docker run -i -t ubuntu /bin/bash
+
+(3)Volumes
+- The persisting data generated by docker and used by Docker containers are stored in Volumes. They are completely managed by docker through docker CLI or Docker API. 
+- Volumes work on both Windows and Linux containers. Rather than persisting data in a container’s writable layer, it is always a good option to use volumes for it. 
+- Volume’s content exists outside the lifecycle of a container, so using volume does not increase the size of a container.
+- You can use -v or –mount flag to start a container with a volume. 
+- E.g :In this sample command, you are using xvolume volume with xxx container.
+
+docker run -d --name xxx  -v xvolume:/app nginx:latest
+
+(4)
+s
+-Docker networking is a passage through which all the isolated container communicate. 
+-There are mainly five network drivers in docker:
+(4.1)Bridge: It is the default network driver for a container. You use this network when your application is running on standalone containers, i.e. multiple containers communicating with same docker host.
+(4.2)Host: This driver removes the network isolation between docker containers and docker host. It is used when you don’t need any network isolation between host and container.
+(4.3)Overlay: This network enables swarm services to communicate with each other. It is used when the containers are running on different Docker hosts or when swarm services are formed by multiple applications.
+(4.4)None: This driver disables all the networking.
+
+---->Registry & Repository
+-A repository is a hosted collection of tagged images that together create the file system for a container.
+
+-A registry is a host -- a server that stores repositories and provides an HTTP API for managing the uploading and downloading of repositories.
+-Docker.com hosts its own index to a central registry which contains a large number of repositories. Having said that, the central docker registry does not do a good job of verifying images and should be avoided if you're worried about security.
+
+————————————
+Images (Documentation: https://docs.docker.com/engine/reference/commandline/docker/)
+
+--->Lists the images available locally
+docker images 
+or
+docker image list
+or
+docker image ls
+
+Notes:
+- The TAG refers to a particular snapshot of the image 
+- IMAGE ID is the corresponding unique identifier for that image.
+- you can think of an image akin to a git repository
+
+--->Where are Images Stored
+(1) Registries (e.g. docker hub)
+(2) Can be stored locally or remote
+
+--->Pulling an image from the repository
+docker pull ubuntu
+docker pull ubuntu:18.04 
+
+Notes:
+- images can be committed with changes and have multiple versions.If you don't provide a specific version number, the client defaults to latest
+
+---> List the full length image IDs 
+docker images --no-trunc
+
+--->List images by name and tag 
+docker images java or docker images ubuntu
+
+- If both REPOSITORY and TAG are provided, only images matching that repository and tag are listed.
+- If nothing matches REPOSITORY, the list is empty.(E.g. docker images java:0)
+
+--->fetching an image with a version
+docker images ubuntu:18.04
+
+--->searching for an image 
+- -There are tens of thousands of images available on Docker Hub. You can also search for images directly from the command line using docker search.
+docker search ubuntu)
+
+--->To find out more about a Docker image, run 
+docker inspect ubuntu
+
+Notes:
+- To get a new Docker image you can either get it from a registry (such as the Docker Hub) or create your own. 
+: docker images 
+: docker images -f “dangling=false”
+: docker images -f “dangling=false” -q
+: docker pull
+: docker push
+: docker rmi
+: docker run : Running an image(E.g. docker run ubuntu)
+: docker rmi -f ubuntu: Remove an Image
+
+--->Types of Images:
+(1)Base images :images that have no parent image, usually images with an OS like ubuntu, busybox or debian.
+(2)Child images : images that build on base images and add additional functionality.
+
+--->Another categorization:
+(1)Official images :images that are officially maintained and supported by the folks at Docker. These are typically one word long. In the list of images above, the python, ubuntu, busybox and hello-world images are official images.
+
+(2)User images are images created and shared by users like you and me. They build on base images and add additional functionality. Typically, these are formatted as user/image-name.
+====================================================================
+session 2
+
+To create a container from image only first time
+===================================================
+docker run --name a-centos -it centos 
+docker start a-centos
+docker stop a-centos
+docker rm a-centos
+docker logs a-centos
+docker ps
+docker ps -a
+docker exec -it a-centos bash
+docker rm $(docker ps -a -q)
+-----------------------------------------------------
+docker run --name a-centos -it centos bash
+
+docker run --name b-centos -it centos bash
+
+docker network inspect bridge
+
+docker exec -it a-centos bash
+
+# ping 172.17.0.3
+============================================
+===========================================
+Example: Commiting the Image in the container (mongodb)
+--------------------------------------------
+--->Downloading the Latest MongoDB Docker Image
+docker pull mongo #Pulls the latest one
+or 
+docker pull mongo:4.0.4 #Pulls the specific version
+
+--->Deploying an Instance of MongoDB as a Container
+docker run --name mongodb mongo:4.0.4
+
+--> To check out on the logs for the image
+docker logs mongodb
+(Displays entire information of the container while starting as well the confirguration details if it has started successfully)
+-->docker start mongodb
+
+--->Interacting with the MongoDB Docker Container with Basic Shell Operations
+docker exec -it mongodb bash
+
+-it: stands for interactive mode
+
+--> To communication with mongodb
+Example: mongo
+
+--> Show databases
+show dbs;
+
+--> To create a database
+use trainingdb;
+
+--> Switch to database
+trainingdb
+
+--> To create a collection
+db.departments.insert({name:'Admin'});
+db.departments.insert({name:'Training'});
+db.departments.insert({name:'Quality'});
+db.departments.insert({name:'HR'});
+
+-->Fetch the data
+db.departments.find()
+
+--->Modifications can be done and changes commited to container. To commit the changes in container
+docker commit -m 'Created mongodb' -a "chhayanikam01<chhaya.nikamg@gmail.com>" 53ef5a2fbda8 my-mongodb:latest
+or
+docker commit 53ef5a2fbda8 my-mongodb:latest
+
+--->To Tag the Image
+docker tag my-mongodb:latest chhayanikam01/my-mongodb
+
+--->To Push The Images
+docker push chhayanikam01/my-mongodb
+
+-->view the repository on Docker hub
+https://cloud.docker.com/repository/list
+
+===========================================
+Example: Commiting the Image in the container (mysql)
+--------------------------------------------
+docker run --name my-mysql -it mysql:latest bash
+--Try runnig the command: mysqld --version
+docker login
+docker commit -m "added mysql server" -a "mySQL Image Created" my-mysql chhayanikam01/my-mysql:latest
+docker push chhayanikam/my-mysql
+https://cloud.docker.com/repository/list
+
+================================================================================
+
+
+docker internall uses networking concepts
+==========================================
+bridge
+host
+none
+
+mysql
+============
+docker run --name p-mysql -e MYSQL_ROOT_PASSWORD=pass123 -d mysql
+
+docker run --name p-mysql -e MYSQL_ROOT_PASSWORD=pass123 -p 3232:3306 -d mysql:5.6
+
+docker logs p-mysql
+
+docker exec -it p-mysql bash
+
+#mysql -uroot -ppass123
+
+mysql> show databases
+-------------------------------
+
+
+======================================
+web servers :httpd    default port :80
+            :nginx    default port :80
+            :mysql    default port :3306
+            :mongodb  default port :27017   
+
+demo -port forwardisation: 
+$docker run -p 6666:80 -d httpd
+
+docker run --name a-nginx -p  1111:80 -d nginx
+docker run --name b-nginx -p  2222:80 -d nginx
+docker run --name c-nginx -p  3333:80 -d nginx
+
+
+docker exec -it a-nginx bash
+echo "<h1>Hello A-NgInx Server </h1>" > /usr/share/nginx/html/index.html
+
+docker exec -it b-nginx bash
+echo "<h1>Hello B-NgInx Server </h1>" > /usr/share/nginx/html/index.html
+
+docker exec -it c-nginx bash
+echo "<h1>Hello C-NgInx Server </h1>" > /usr/share/nginx/html/index.html
+
+session 03
+===============================================
+some shortcut commands
+
+Command to stop all running container at once
+docker stop $(docker ps -a -q)
+
+command to remove all containers
+docker rm $(docker ps -a -q)
+
+command to remove all images
+docker rmi $(docker images -q)
+
+========================================
+Activity: To create image from running container (docker commit)
+We want to create a simple web application like hello, and people should be able to pull your app from docker hub
+
+step 1:
+docker run --name a-httpd -p 1111:80 -d httpd
+
+step 2:change the contents of html file
+docker exec -it a-httpd bash
+
+echo "<h1>Hello Welcome To Custom Apache Image</h1>" > /usr/local/apache2/htdocs/index.html
+
+--> now refresh the page on 1111 we should get the changes
+-->In case you are running on docker desktop use http://localhost:1111
+
+exit
+
+step 3: commit the changes
+$docker commit -m 'Index File Content Changed' -a 'Chhaya Nikam <chhaya.nikam@gmail.com>' a-httpd chhayanikam01/apache:1.1
+
+--docker login through browser
+username :chhayanikam01
+password :password@123
+
+docker push chhayanikam01/apache:1.1
+
+---can be run on any machine
+docker run --name b-apache -p 4545:80 -d chhayanikam01/apache:1.1
+-------------------------------------------------------------------------------------------------
+Activity : creating image from scratch (docker build)
+for this we use Dockerfile : 
+A text file with instructions to build image
+Automation of Docker Image Creation
+
+FROM           :Base Image    
+MAINTAINER     :Author Name
+ENV            :Environment variable
+ADD            :ADD the files while buiding the image
+RUN            :To install libraries/packages (executed while building the image)
+ENTRYPOINT     :Executed at run time and we can not override the commands
+CMD            :Executed at run time and we can override by passing command line argument
+
+Step 1 : Create a file named Dockerfile
+Step 2 : Add instructions in Dockerfile
+Step 3 : Build dockerfile to create image
+Step 4 : Run image to create container
+
+Example  :Dockerfile
+Step 1 : Create a file named Dockerfile
+
+$vi Dockerfile
+
+Step 2 : Add instructions in Dockerfile
+copy the below code
+
+FROM ubuntu
+MAINTAINER Chhaya Nikam <chhaya.nikam@gmail.com>
+RUN apt-get update
+
+CMD ["echo", "Hello World..! from my first docker iamge1"]
+
+
+CMD ["echo", "Hello World..! from my first docker iamge2"]
+CMD ["echo", "Hello World..! from my first docker iamge3"]
+CMD ["echo", "Hello World..! from my first docker iamge4"]
+
+Note: CMD can be written multiple times but the last one will be called
+
+Step 3 : Build dockerfile to create image
+$ docker build -t chhayanikam01/a-ubuntu:1.1 .
+
+here -t is for tagging image
+dot is for the current dir where Dockerfile is created
+You may createmultiple images from the dockerfile
+
+$ docker build -t b-ubuntu:1.1 .
+
+step 4: you can optionally push the image to docker hub
+docker push chhayanikam01/a-ubuntu:1.1
+
+Note:use docker login in case you are not logged in
+
+step 5:
+docker run chhayanikam01/a-ubuntu:1.1
+
+COMMANDS
+: docker build directoryOfDocekrfile
+: docker build -t ImageName:Tag directoryOfDocekrfile
+: docker run imageid 
+--------------------------------------
+Using ENTRYPOINT
+modify the Dockerfile as below
+
+FROM ubuntu
+MAINTAINER Chhaya Nikam <chhaya.nikam@gmail.com>
+RUN apt-get update
+
+ENTRYPOINT ["echo", "Hello World..! from my first docker iamge1"]
+ENTRYPOINT ["echo", "Hello World..! from my first docker iamge2"]
+ENTRYPOINT ["echo", "Hello World..! from my first docker iamge3"]
+ENTRYPOINT ["echo", "Hello World..! from my first docker iamge4"]
+
+The main difference between CMD and ENTRYPOINT is ENTRYPOINT  allows appending new contents while running docker container
+
+$ docker build -t testentry .
+// optionally if dockerfile name is different give any other filename
+$ docker build -f Somefile -t testentry1 .
+
+$ docker run testentry1
+$ docker run c echo "Hello friends"
+
+CMD and ENTRYPOINT can also used in combinations
+
+-------------------------------------------------
+Example:
+
+Docker file for MYSQL
+=======================
+
+
+Step 1: vi script.sql
+script.sql
+===========
+use company;
+create table employee(id int primary key,name text,salary double);
+insert into employee values(101,'RAM',10000.00);
+insert into employee values(102,'RAHIM',20000.00);
+insert into employee values(103,'DAVID',30000.00);
+insert into employee values(104,'Jack',40000.00);
+
+Step 2:
+vi Dockerfile
+# Derived from official mysql image (our base image)
+FROM mysql
+# Add a database
+ENV MYSQL_DATABASE company
+ENV MYSQL_ROOT_PASSWORD admin
+ENV MYSQL_USER user1
+ENV MYSQL_PASSWORD password
+# Add the content of the sql-scripts/ directory to your image
+# All scripts in docker-entrypoint-initdb.d/ are automatically
+# executed during container startup
+ADD script.sql /docker-entrypoint-initdb.d/
+
+$ docker build -t p-mysql:5.1 .
+$ docker images
+$docker run --name a-mysql -d p-mysql:5.1
+$docker exec -it a-mysql bash
+#mysql -uroot -padmin
+==========================================
+
+----------------------------------------------------------------------------------------
+Docker File Spring Boot Java Application
+================================================
+FROM openjdk:8
+ADD target/docker-spring-boot.jar docker-spring-boot.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","docker-spring-boot.jar"]
+
+
+======>
+
+docker build -t chhayanikam01/spring-dokcer-demo:1.1 .
+
+docker login
+
+docker push chhayanikam01/spring-docker-demo:1.1
+
+----------------------------------------------------------------------
+
+
+===========================================
+Example: Commiting the Image in the container (mongodb)
+--------------------------------------------
+--->Downloading the Latest MongoDB Docker Image
+docker pull mongo #Pulls the latest one
+or 
+docker pull mongo:4.0.4 #Pulls the specific version
+
+--->Deploying an Instance of MongoDB as a Container
+docker run --name mongodb mongo:4.0.4
+
+--> To check out on the logs for the image
+docker logs mongodb
+(Displays entire information of the container while starting as well the confirguration details if it has started successfully)
+-->docker start mongodb
+
+--->Interacting with the MongoDB Docker Container with Basic Shell Operations
+docker exec -it mongodb bash
+
+-it: stands for interactive mode
+
+--> To communication with mongodb
+Example: mongo
+
+--> Show databases
+show dbs;
+
+--> To create a database
+use trainingdb;
+
+--> Switch to database
+trainingdb
+
+--> To create a collection
+db.departments.insert({name:'Admin'});
+db.departments.insert({name:'Training'});
+db.departments.insert({name:'Quality'});
+db.departments.insert({name:'HR'});
+
+-->Fetch the data
+trainingdb.departments.find()
+
+--->Modifications can be done and changes commited to container. To commit the changes in container
+docker commit -m 'Created mongodb' -a "chhayanikam<chhaya.nikamg@gmail.com>" 53ef5a2fbda8 my-mongodb:latest
+or
+docker commit 53ef5a2fbda8 my-mongodb:latest
+
+--->To Tag the Image
+docker tag my-mongodb:latest chhayanikam01my-mongodb
+
+--->To Push The Images
+docker push chhayanikam01/my-mongodb
+
+-->view the repository on Docker hub
+https://cloud.docker.com/repository/list
+
+===========================================
+Example: Commiting the Image in the container (mysql)
+--------------------------------------------
+docker run --name my-mysql -it mysql:latest bash
+--Try runnig the command: mysqld --version
+docker login
+docker commit -m "added mysql server" -a "mySQL Image Created" my-mysql lijishynu/my-mysql:latest
+docker push chhayanikam01/my-mysql
+https://cloud.docker.com/repository/list
+	
+------------------------------------------------------------------------------------------
+Session 4
+communicating between containers
+Linking Docker containers with Links
+===========================================
+--today
+example: wordpress+mysql linking
+
+Links allow the containers to discover each other and securely transfer the information about one container to another container.
+
+step 1: create a custom bridge network
+docker network create p-network
+
+verify: 
+docker network ls
+
+step 2:
+docker run --name mysql02 --network p-network -e MYSQL_ROOT_PASSWORD=Password1234 -d mysql:5.6
+verify: 
+docker ps
+docker images
+docker inspect p-network
+
+step 3:
+docker run --name wordpress02 --network p-network --link mysql02 -p 1111:80 -e WORDPRESS_DB_HOST=mysql02:3306 -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=Password1234 -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_TABLE_PREFIX=wp_ -d wordpress
+
+Note:It is added to same p-network , --link is used to link the container, def port 80 of mysql is exposed to 1111,
+       -e is used for environment variable.
+       instead of ip address we are using mysql container name,3306 is the port at which sql server is running, password1234 is provided to wordpress to connect to        mysql db, wordpress database will be created with the table name prefixed as wp_ , both the containers will start in detach mode because of -d
+
+step 4: test
+click the 1111 port
+select eng language-->complete the form ---> Install wordpress
+
+step 4:checking the tables are created in mysql. so lets move inside the mysql02 container.
+docker exec -it mysql02 bash
+mysql -uroot -pPassword1234
+show databases
+use wordpress;
+show tables;
+
+step 4: create a new post
+ query the user_post table
+ 
+
+exit;  ----------> comes out of the container
+
+Note: In docker toolbox you can use the ip of the container
+eg.
+http://192.168.0.23:1111
+or 
+http://localhost:1111
+When we do port forwardization we are making the image availaible to all.
+
+internally the containers know each other by name
+to make it globally (external)available should have a dns
+
+step 4: stop the running containers
+docker stop mysql02 wordpress02
+----------------------------------------------------------------------------------------------------------------------
+Docker Volumes
+===============
+
+1. What are Volumes
+2. How to create / list / delete volumes
+3. How to attach volume to a container
+4. How to share volume among containers
+5. What are bind mounts
+
+Volumes are the preferred mechanism for persisting data generated by and used by Docker containers
+
+docker volume  //get information
+docker volume create
+docker volume ls
+docker volume inspect
+docker volume rm
+docker volume prune
+
+Use of Volumes
+===================
+Decoupling container from storage
+Share volume (storage/data) among different containers
+Attach volume to container
+On deleting container volume does not delete
+
+===>Docker Volumes:
+
+-->The Docker File System
+- In order to understand Docker volumes, it is important to first understand how the Docker file system works.
+- A Docker image is a collection of read-only layers. When you launch a container from an image, Docker adds a read-write layer to the top of that stack of read-only layers. Docker calls this the Union File System.
+- Any time a file is changed, Docker makes a copy of the file from the read-only layers up into the top read-write layer. This leaves the original (read-only) file unchanged.
+- When a container is deleted, that top read-write layer is lost. This means that any changes made after the container was launched are now gone.
+------------------------
+- The whole idea is that you can start, stop and delete the containers without losing data.So if you need to persist data, do it outside of the containers.
+- Volumes are the preferred mechanism for persisting data generated by and used by Docker containers
+- By default all files created inside a container are stored on a writable container layer
+- The data doesn’t persist when that container is no longer running
+- A container’s writable layer is tightly coupled to the host machine where the container is running. You can’t easily move the data somewhere else.
+------------------------
+--->How a Volume Can Help?
+- A volume allows data to persist, even when a container is deleted. Volumes are also a convenient way to share data between the host and the container.
+- Mounting a volume is a good solution if you want to:
+(1)Push data to a container.
+(2)Pull data from a container.
+(3)Share data between containers.
+- Docker volumes exist outside the Union File System of read-only and read-write layers. The volume is a folder which is shared between the container and the host machine. Volumes can also be shared between containers.
+- From the container, the volume acts like a folder which you can use to store and retrieve data. It is simply a mount point to a directory on the host.
+- volumes are managed by Docker and are isolated from the core functionality of the host machine
+-----------------------------------------------
+Step 1 — Creating an Independent Volume
+
+-------------------
+---> make a data volume called data:
+docker volume create mydata
+
+--->list of all the volumes created and their driver
+docker volume ls
+
+--->Get details of the volume
+docker volume inspect mydata
+
+--->removing volumes
+docker volume rm mydata
+
+-------------
+
+Commands
+docker run --name MyJenkins1 -v myvol1:/var/jenkins_home -p 8080:8080 -p 50000:50000  -d jenkins
+docker logs MyJenkin1
+
+
+docker run --name MyJenkins2 -v myvol1:/var/jenkins_home -p 9090:8080 -p 60000:50000 jenkins
+
+Note : only run the first command in detached mode
+When you run the Jenkins second instance it will not generate the admin password . It will take the same password for the first one as it is stored and data is shared between volumes.
+
+
+References
+https://hub.docker.com/_/jenkins/
+https://docs.docker.com/storage/volumes/
+
+==============================================================================================================================================================
+
+NOTES
+
+By default all files created inside a container are stored on a writable container layer
+
+The data doesn稚 persist when that container is no longer running
+
+A container痴 writable layer is tightly coupled to the host machine where the container is running. You can稚 easily move the data somewhere else.
+
+Docker has two options for containers to store files in the host machine
+so that the files are persisted even after the container stops
+
+VOLUMES  and  BIND MOUNTS
+
+Volumes are stored in a part of the host filesystem which is managed by Docker
+Non-Docker processes should not modify this part of the filesystem
+Bind mounts may be stored anywhere on the host system
+Non-Docker processes on the Docker host or a Docker container can modify them at any time
+In Bind Mounts, the file or directory is referenced by its full path on the host machine.
+
+Volumes are the best way to persist data in Docker
+volumes are managed by Docker and are isolated from the core functionality of the host machine
+A given volume can be mounted into multiple containers simultaneously.
+
+When no running container is using a volume, the volume is still available to Docker and is not removed automatically. You can remove unused volumes using docker volume prune.
+
+When you mount a volume, it may be named or anonymous.
+
+Anonymous volumes are not given an explicit name when they are first mounted into a container
+
+Volumes also support the use of volume drivers, which allow you to store your data on remote hosts or cloud providers, among other possibilities.
+
+4.Components of Docker
+======================
+
+=>Docker for Mac - It allows one to run Docker containers on the Mac OS.
+
+=>Docker for Linux - It allows one to run Docker containers on the Linux OS.
+
+=>Docker for Windows - It allows one to run Docker containers on the Windows OS.
+
+=>Docker Engine - It is used for building Docker images and creating Docker containers.
+
+=>Docker Hub - This is the registry which is used to host various Docker images.
+
+=>Docker Compose - This is used to define applications using multiple Docker containers.
+
+
+5.Installation of Docker on windows?
+
+    Refer this site :
+
+    https://docs.docker.com/toolbox/toolbox_install_windows/
+
+
+  For windows we need to download Docker toolbox.
+
+
+To Check Installation
+=======================
+
+1.docker version  :shows the version of docker
+
+2.docker info     :gives the indormation of docker
+
+Docker Basic Commands
+=====================
+
+Basic
+: docker version
+: docker --version
+: docker -v
+: docker info
+: docker --help
+: docker login
+覧覧覧覧覧覧
+Images
+: docker images
+: docker pull
+: docker push
+: docker rmi
+覧覧覧覧覧覧
+Containers
+: docker ps
+: docker run 
+: docker start
+: docker stop
+: docker pause
+覧覧覧覧覧覧
+System
+: docker stats
+: docker system df
+: docker system prune
+
+
+To remove all multiple containers
+===================================
+docker rm -f c2d79dbd5581 39bff36fec4f 5cddf9344a62 152e56f4f4d1 558197ba2d6e e1672924ad4e
+
+
+
+Downloading the Latest MongoDB Docker Image
+===========================================
+   Syntax : docker pull <image-name>  or docker pull <image-name>:<tag>
+
+    Example : docker pull mongo or docker pull mongo:4.0.4
+
+
+Deploying an Instance of MongoDB as a Container
+====================================================
+   Syntax : docker run --name <alias-name> <image-name>:tag
+
+   Example : docker run --name mongodb mongo:4.0.4
+
+
+Interacting with the MongoDB Docker Container with Basic Shell Operations
+==========================================================================
+
+  Syntax :docker exec -it <container-name> bash
+
+  Example : docker exec -it mongodb bash
+
+   do some modification
+   and commit the changes.  
+
+
+To commit the changes in container
+====================================
+
+ docker commit -m 'Chhaya has created mongodb' -a "Chhaya /nikam<chhayanikam01@gmail.com>" 055e9cfa39fc chhaya-mongodb:latest
+
+
+To Tag the Image
+==================
+docker tag chhaya-mongodb:latest chhayanikam01/chhaya-mongodb
+
+
+To Push The Images
+====================
+docker push chhayanikam01/chhaya-mongodb
+
+
+
+short cut commands
+=====================
+docker run --name chhaya-mysql -it mysql:latest bash
+
+
+docker commit -m "added mysql server" -a "chhaya Chinchole" chhaya-mysql chhayach82/chhaya-mysql:latest
+
+
+docker login
+
+docker push chhayach82/chhaya-mysql
+
+
+
+https://cloud.docker.com/repository/list
+
+
+1. What are images
+2. How to pull image
+3. How to run a container using an image
+4. Basic Commands
+
+TIPS & TRICKS
+
+
+What are Images ?
+=================
+
+Docker Images are templates used to create Docker containers
+Container is a running instance of image
+
+Where are Images Stored
+Registries (e.g. docker hub)
+Can be stored locally or remote
+
+: docker images --help
+: docker pull image
+: docker images
+: docker images -q
+: docker images -f 電angling=false・
+: docker images -f 電angling=false・-q
+
+: docker run image
+: docker rmi image
+: docker rmi -f image
+
+: docker inspect
+: docker history imageName
+
+
+
+1. What are Containers
+2. How to create Containers
+3. How to start / stop Containers
+4. Basic Commands
+
+TIPS & TRICKS
+
+
+What are Containers:
+Containers are running instances of Docker Images
+
+
+
+
+
+COMMANDS
+: docker ps
+: docker run ImageName
+: docker start ContainerName/ID
+: docker stop ContainerName/ID
+
+: docker pause ContainerName/ID
+: docker unpause  ContainerName/ID
+
+: docker top ContainerName/ID
+: docker stats ContainerName/ID
+
+: docker attach ContainerName/ID
+
+: docker kill ContainerName/ID
+: docker rm ContainerName/ID
+
+: docker history ImageName/ID
+
+
+
+What is a Container ?
+=====================
+
+A container image is a lightweight, stand-alone, executable package of a piece of software that includes everything needed to run it: code, runtime, system tools, system libraries, settings.
+
+Features of Containers:
+======================
+=>Are lightweight
+=>Fewer resources are used
+=>Booting of containers is very fast
+=>Can start, stop, kill, remove containers easily and quickly
+=>Operating System resources can be shared within Docker
+=>Containers run on the same machine sharing the same Operating system Kernel, this makes it faster
+=>You can use the command docker container create  to create a container in stopped state
+
+
+
+Day2
+=====
+
+
+Docker File
+=============
+
+1. What is Dockerfile
+2. How to create Dockerfile
+3. How to build image from Dockerfile
+4. Basic Commands
+
+TIPS & TRICKS
+
+Dockerfile :
+A text file with instructions to build image
+Automation of Docker Image Creation
+
+FROM
+MAINTAINER
+RUN
+CMD
+
+
+
+Step 1 : Create a file named Dockerfile
+
+Step 2 : Add instructions in Dockerfile
+
+Step 3 : Build dockerfile to create image
+
+Step 4 : Run image to create container
+
+
+Example  :Dockerfile
+
+FROM ubuntu
+MAINTAINER chhaya Chinchole <chhayach82@gmail.com>
+RUN apt-get update
+CMD ["echo", "Hello World..! from my first docker iamge"]
+
+
+COMMANDS
+docker build directoryOfDocekrfile
+docker build -t ImageName:Tag directoryOfDocekrfile
+docker run image
+
+
+
+References:
+
+https://www.youtube.com/redirect?event=video_description&v=LQjaJINkQXY&redir_token=E3PErBNVcg9u6KYx6LdmsGYdf4x8MTU2Mjc3ODI4OUAxNTYyNjkxODg5&q=https%3A%2F%2Fgithub.com%2Fwsargent%2Fdocker-cheat-sheet%23dockerfile
+
+https://www.youtube.com/redirect?event=video_description&v=LQjaJINkQXY&redir_token=E3PErBNVcg9u6KYx6LdmsGYdf4x8MTU2Mjc3ODI4OUAxNTYyNjkxODg5&q=https%3A%2F%2Fdocs.docker.com%2Fengine%2Freference%2Fbuilder%2F%23environment-replacement
+
+--------------------------------------------------------------------
+Docker Compose
+==============
+
+1. What | Why - Docker Compose
+2. How to install
+3. How to create docker compose file
+4. How to use docker compose file to create services
+5. Basic Commands
+
+TIPS
+
+Docker compose
+
+It is a utility tool for defining & running multi-container docker applications
+use yaml files to configure application services (docker-compose.yml)
+can start all services with a single command : docker compose up
+can stop all services with a single command : docker compose down
+can scale up selected services when required
+
+
+Step 1 : install docker compose
+   (already installed on windows and mac with docker)
+   docker-compose -v
+
+   2 Ways
+
+   1.  https://github.com/docker/compose/rel...
+
+   2. Using PIP
+    pip install -U docker-compose
+
+Step 2 : Create docker compose file at any location on your system
+   docker-compose.yml
+
+version: '3'
+services:
+  web:
+    image: nginx
+  database:
+    image: redis
+
+
+Step 3 : Check the validity of file by command
+    docker-compose config
+
+docker network ls
+there is no "root_default" now execute the below it should create this network
+
+Step 4 : Run docker-compose.yml file by command
+   docker-compose up -d
+$docker ps
+$docker inspect network root_default
+
+so docker-compose internally creates a custom bridge network.
+
+Steps 5 : Bring down application by command
+ $  docker-compose down
+ $docker inspect network root-default
+
+TIPS
+How to scale services
+
+scale
+docker-compose up -d --scale database=4
+
+
+day2
+========================
+
+docker pull centos
+
+docker run -it centos bash
+
+
+docker run -it ubuntu bash
+
+//create folders and files
+
+//exit
+
+To Login
+==========
+docker login
+
+To commit the changes in container
+======================================
+
+docker commit -m "Added new folders" -a "chhaya Nikam" 2886b219bb66 chhayach82/chhaya-ubuntu:latest
+
+To push the images
+==================
+
+docker push chhayach82/chhaya-ubuntu:latest
+
+
+
+
+Docker is a software Contairnerization platform
+
+Difference Virtualization vs Contairnerization
+==================================================
+Virtulization
+==============
+
+Host os=> Hypervisor=>(Guest os1,Guest os2....)=>(Bin& Lib, Bin & Lib 2.....)=>(App1,App2,.....)
+
+1.Virtualization is a technique of importing a guest os on the top of host os.
+2.This technique is revolution in the beginning because Developers run the different application in different vms all running on same host.
+3.This eliminate the need of extra h/w resource and enable the backup allowing the the recovery in failure conditions
+4.lowering the total cost of foundation.
+ Advantages
+ ==========
+   1.Multiple OS in the same machine
+   2.Easy Maintainance and Recovery
+   3.Lower total cost of Ownership
+
+Disadvantages
+=============
+   1.Multiple VMs Lead to unstable performance
+   2.Hypervisors are not as efficient as a host os
+   3.Long Boot up process (Approximate 1 minute)
+   4.This is using the host system resources
+   5.This is very critical in case of real time applications
+   where fast processing is required. 
+   6.scaling the no of vms is tedious and costly affiar
+
+
+Contairnerization
+==================
+Host os=>Container Engine=>(Bin& Lib, Bin & Lib 2.....) =>(App1,App2)
+
+1.Contairnerization is Just Virtualization at OS Level
+2.Contairnerization is also a type of Virtualization.
+3.It is more efficient as there is no guest os.
+4.Binaries and Libraries of the containers are on the host kernel which makes processing and execution very fast
+5.Even Booting takes fraction of second. 
+
+ 
+
+ Virtualization brings the abstraction at h/w where as Contairnerization brings abstraction to software
+
+   Advantages
+   ==========
+	1.Containers on same os kernel are lighter and smaller
+	2.Better Resource utilization Compared to VMS
+	3.Short Boot up process (1/20th of second )
+
+
+
+Which of the below option is incorrect ?
+
+1. Contairnerization  is replacing Virtualization 
+2. Contairnerization brings process level isolation
+3. Hypervisors Manage the VMS.
+
+
+
+What is Docker ?
+==============
+Docker is a Contairnerization  platform which packages your 
+application and all its dependencies together in the form of containers
+so as to ensure that your application works seamlessly in any environment 
+be it Dev/Test/Prod
+
+Host Os=>Docker Engine=> (App1[bin & lib],App2[bin & lib])=>(container1 ,container2)
+
+The no of system scaled up easily.
+
+=============================================================
+        VMS                                Dockers
+=============================================================
+
+        Elephants           Size           Rabbit
+
+        Tortoise           Speed           Chita
+
+	No integration     Integration     comfortably integrated with Devops tools fo automating the manual process.
+
+              
+
+Resource and Memory Utilization
+======================================
+
+
+Host os 16 GB Ram
+==================
+         In Case of virtual Macine
+         =============================
+
+     Allocation =>  VMs    => Memory Used    =>  Memory Un used
+        6 GB    =>  VM 1   =>   4 GB         =>  2 GB
+        4 GB    =>  VM 2   =>   1 GB         =>  3 GB
+        6 GB    =>  VM 3   =>   2 GB         =>  2 GB
+==========================================================
+       16 GB                   9 GB              7 GB
+
+7  GB RAM is blocked
+7  GB RAM cannot be alloted to new vm. 
+
+Host os 16 GB Ram
+==================
+         In Case of Docker
+         =============================
+
+     Allocation =>  Docker       => Memory Used    
+                =>  Container1   =>   4 GB         
+                =>  Container2   =>   1 GB         
+                =>  Container3   =>   2 GB         
+==========================================================
+       16 GB                         9 GB             7 GB
+
+
+No Ram is allocated for unused
+7  GB RAM is unused 
+7  GB RAM can be alloted to new containerization.
+
+Building and deployment 
+===============================
+
+In case of VMs
+             New Builds=>Multiple Guest OS =>Separate Libraries =>Heavy=>More Time
+
+In case of Docker
+
+             New Builds=>Same Host OS =>Separate Libraries =>Light Weight  => Less Time
+
+
+
+Integration
+=============
+In case of Vms Integration is possible but costly due to infrastructur requirement
+and not easily scalable.
+
+In case of Docker Integration is Faster,Cheap and scalable.
+
+
+
+Q.Which of the follwing option is correct w.r.t creating Docker containers. ?
+================================================================================
+
+1.I can build my own image and use it for creating a Docker container. T
+ 
+2.I can pull the image from Docker hub and then run the Docker image. T
+ 
+3.I can create a Docker container without Docker image. F
+
+Docker containers can be created by executing the docker image hence it is not 
+possible to run a container without building the image.
+
+
+Q.Where does the Docker daemon stores the Docker images?
+
+1.Docker Client
+2.Docker Host
+3.Docker Registry
+
+All the docker images are stored  in the Docker registry which can be either
+local repository or a remote Docker hub.
+
+
+Question
+=========
+Suppose I have a System with 4 GB RAM and I want to run 4 instances of particular Devops tool 
+then which of the below is the best choice?
+
+1. 4 VMS with 4 different instances of that tool
+2. 1 VM  with 4 different instances of that tool
+3. 4 Docker containers with different instances of that tool 
+
+
